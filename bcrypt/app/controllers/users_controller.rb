@@ -1,24 +1,28 @@
 class UsersController < ApplicationController
 
   def new
-  
+    @user = User.new
   end
 
   def create
-    user = User.new(
-      name: params[:name],
-      email: params[:email],
-      password: params[:password],
-      password_confirmation: params[:password_confirmation]
-    )
-    if user.save
-      session[:user_id] = user.id
-      flash[:success] = "Succesfully created user!"
-      redirect_to '/contacts'
+    hello
+    @user = User.new(user_params)
+    if @user.save
+      session[:user_id] = @user.id
+      redirect_to root_url, notice: "Thank you for signing up"
     else
-      flash[:warning] = "Invalid email or password"
-      redirect_to '/signup'
+      render 'new'
     end
+  end
+
+  private
+
+  def user_params
+    params.require(:user).permit(:email, :password, :password_confirmation)
+  end
+
+  def hello
+    "Hello"
   end
 
 end

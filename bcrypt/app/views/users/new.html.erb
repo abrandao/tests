@@ -1,25 +1,29 @@
-<%= form_with scope: :user, local: true do |form| %>
-  <p>
-    <%= form.label :name %><br>
-    <%= form.text_field :name %>
-  </p>
- 
-  <p>
-    <%= form.label :email %><br>
-    <%= form.text_field :email %>
-  </p>
+<h1>Sign Up</h1>
 
-  <p>
-    <%= form.label :password %><br>
-    <%= form.text_field :password %>
-  </p>
+<%= form_for @user do |f| %>
+  <% if @user.errors.any? %>
+    <div class="error_messages">
+      <h2>Form is invalid</h2>
+      <ul>
+        <% @user.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
 
-  <p>
-    <%= form.label :password_confirmation %><br>
-    <%= form.text_field :password_confirmation %>
-  </p>
- 
-  <p>
-    <%= form.submit %>
-  </p>
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.text_field :email %>
+  </div>
+  <div class="field">
+    <%= f.label :password %><br />
+    <%= f.password_field :password %>
+  </div>
+  <div class="field">
+    <%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation %>
+  </div>
+  <div class="actions"><%= f.submit "Sign Up" %></div>
 <% end %>
+

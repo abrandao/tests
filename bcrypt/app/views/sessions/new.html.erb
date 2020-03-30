@@ -1,16 +1,13 @@
-<%= form_with model @session, local: true do |form| %>
-   
-  <p>
-    <%= form.label :email %><br>
-    <%= form.text_field :email %>
-  </p>
+<h1>Log In</h1>
 
-  <p>
-    <%= form.label :password %><br>
-    <%= form.text_field :password %>
-  </p>
- 
-  <p>
-    <%= form.submit %>
-  </p>
+<%= form_tag sessions_path do %>
+  <div class="field">
+    <%= label_tag :email %><br />
+    <%= text_field_tag :email, params[:email] %>
+  </div>
+  <div class="field">
+    <%= label_tag :password %><br />
+    <%= password_field_tag :password %>
+  </div>
+  <div class="actions"><%= submit_tag "Log In" %></div>
 <% end %>
