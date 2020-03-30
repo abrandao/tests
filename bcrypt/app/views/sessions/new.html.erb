@@ -1,0 +1,16 @@
+<%= form_with model @session, local: true do |form| %>
+   
+  <p>
+    <%= form.label :email %><br>
+    <%= form.text_field :email %>
+  </p>
+
+  <p>
+    <%= form.label :password %><br>
+    <%= form.text_field :password %>
+  </p>
+ 
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>
