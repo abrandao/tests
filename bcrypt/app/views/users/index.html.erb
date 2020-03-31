@@ -1,0 +1,26 @@
+<h1>Listing Users</h1>
+ 
+<table>
+  <% @users.each do |user| %>
+    <tr>
+      <td>
+        <label style="font-weight: bold" >ID:</label>
+        <%= user.id %>
+      </td>
+      <td>
+        <label style="font-weight: bold" >NAME:</label>
+        <%= user.name %>
+      </td>
+      <td>
+        <label style="font-weight: bold" >Admin:</label>
+        <%= user.admin %>
+      </td>
+      <td>
+        <label style="font-weight: bold" >Email:</label>
+        <%= user.email %>
+      </td>
+      <td><%= link_to 'Edit', edit_user_path(user) %></td>
+      <td><%= link_to 'Show', user_path(user) %></td>
+    </tr>
+  <% end %>
+</table>
